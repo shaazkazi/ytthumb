@@ -817,3 +817,13 @@ input:focus {
 .modal-btn.secondary:hover {
     background: #dee2e6;
 }
+/* Add this to style the SVG icon */
+.youtube-icon {
+    vertical-align: middle;
+    margin-right: 8px;
+    transition: transform 0.3s ease;
+}
+
+.youtube-icon:hover {
+    transform: scale(1.1);
+}
