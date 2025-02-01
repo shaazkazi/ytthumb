@@ -827,3 +827,32 @@ input:focus {
 .youtube-icon:hover {
     transform: scale(1.1);
 }
+/* Add these styles for an enhanced mobile modal experience */
+.modal-close-mobile {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    padding: 12px 24px;
+    border-radius: 50px;
+    color: #1e3c72;
+    font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: none;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(4px);
+    z-index: 1001;
+}
+
+@media (max-width: 768px) {
+    .modal-close-mobile {
+        display: flex;
+    }
+    
+    .modal-content {
+        margin: 0 15px;
+    }
+}

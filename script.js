@@ -207,26 +207,29 @@ document.getElementById('videoUrl').addEventListener('paste', function(e) {
         }
     }, 100);
 });
+  // Update modal close handlers
+  function closeModal() {
+      const modal = document.getElementById('previewModal');
+      modal.classList.remove('active');
+      setTimeout(() => modal.style.display = 'none', 300);
+  }
 
-// Add these event listeners for modal closing
-window.onclick = function(event) {
-    const modal = document.getElementById('previewModal');
-    if (event.target === modal) {
-        modal.style.display = 'none';
-    }
-}
+  // Enhanced modal close handlers
+  document.querySelector('.close-modal').onclick = closeModal;
+  document.querySelector('.modal-close-mobile').onclick = closeModal;
 
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        document.getElementById('previewModal').style.display = 'none';
-    }
-});
+  // Improved click outside handler for both desktop and mobile
+  document.getElementById('previewModal').addEventListener('click', function(event) {
+      if (event.target === this) {
+          closeModal();
+      }
+  });
 
-// Make sure the close button works
-document.querySelector('.close-modal').onclick = function() {
-    document.getElementById('previewModal').style.display = 'none';
-}
-
+  document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape') {
+          closeModal();
+      }
+  });
 function downloadThumbnail(url, videoId, quality) {
     fetch(url)
         .then(response => response.blob())
