@@ -41,7 +41,7 @@ function createThumbnailItem(quality, container, videoId) {
             <h4>${quality.name}</h4>
             <span class="size-badge">${quality.size}</span>
         </div>
-        <div class="thumbnail-preview">
+        <div class="thumbnail-preview" onclick="previewImage('${quality.url}')">
             <img src="${quality.url}" alt="${quality.name}" 
                 onerror="this.parentElement.classList.add('not-available')"
                 onload="this.parentElement.classList.add('available')">
@@ -55,9 +55,6 @@ function createThumbnailItem(quality, container, videoId) {
             </a>
             <button class="copy-btn" onclick="copyImageUrl('${quality.url}')">
                 <i class="fas fa-copy"></i>
-            </button>
-            <button class="preview-btn" onclick="previewImage('${quality.url}')">
-                <i class="fas fa-eye"></i>
             </button>
         </div>
     `;
