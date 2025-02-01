@@ -131,13 +131,27 @@ function previewImage(url) {
     modalCopy.onclick = () => copyImageUrl(url);
 }
 
-// Add this to your existing close modal functionality
-document.querySelector('.close-modal').onclick = function() {
+function closeModal() {
     const modal = document.getElementById('previewModal');
     modal.classList.remove('active');
     setTimeout(() => modal.style.display = 'none', 300);
 }
+// Enhanced modal close handlers
+document.querySelector('.close-modal').onclick = closeModal;
+document.querySelector('.modal-close-mobile').onclick = closeModal;
 
+// Improved click outside handler for both desktop and mobile
+document.getElementById('previewModal').addEventListener('click', function(event) {
+    if (event.target === this) {
+        closeModal();
+    }
+});
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeModal();
+    }
+});
 function clearInput() {
     document.getElementById('videoUrl').value = '';
     document.getElementById('videoUrl').focus();
@@ -229,8 +243,7 @@ document.getElementById('videoUrl').addEventListener('paste', function(e) {
       if (event.key === 'Escape') {
           closeModal();
       }
-  });
-function downloadThumbnail(url, videoId, quality) {
+  });function downloadThumbnail(url, videoId, quality) {
     fetch(url)
         .then(response => response.blob())
         .then(blob => {
