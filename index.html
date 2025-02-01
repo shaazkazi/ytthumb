@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate YouTube Thumbnail Downloader</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta name="description" content="Download high-quality thumbnails from YouTube videos, Shorts, and Live streams">
+    <link rel="icon" type="image/png" href="favicon.png">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fab fa-youtube"></i> YouTube Thumbnail Downloader</h1>
+            <p>Extract high-quality thumbnails from any YouTube video, Short, or Live stream</p>
+        </div>
+        
+        <div class="input-section">
+            <div class="url-input-wrapper">
+                <i class="fas fa-link input-icon"></i>
+                <input type="text" id="videoUrl" placeholder="Paste YouTube video URL here" autofocus>
+                <button class="clear-input" onclick="clearInput()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <button onclick="getThumbnail()" class="main-button">
+                <i class="fas fa-search"></i> Get Thumbnail
+            </button>
+        </div>
+
+        <div class="supported-formats">
+            <p>Supports: Regular Videos • Shorts • Live Streams • Embedded Videos</p>
+        </div>
+
+        <div class="quick-history" id="historyContainer">
+            <!-- Recent thumbnails will appear here -->
+        </div>
+
+        <div class="result-section" id="resultSection">
+            <div class="quality-options">
+                <h3><i class="fas fa-images"></i> Available Qualities</h3>
+                <div class="thumbnails" id="thumbnailContainer">
+                    <!-- Thumbnails will be inserted here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="batch-actions">
+            <button onclick="downloadAllThumbnails()" class="batch-button">
+                <i class="fas fa-download"></i> Download All
+            </button>
+            <button onclick="clearHistory()" class="batch-button secondary">
+                <i class="fas fa-trash"></i> Clear History
+            </button>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <p>Made with <i class="fas fa-heart"></i> for content creators</p>
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+      <!-- Preview Modal Template -->
+      <div id="previewModal" class="modal">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h3>Preview Thumbnail</h3>
+                  <button class="close-modal">
+                      <i class="fas fa-times"></i>
+                  </button>
+              </div>
+              <div class="modal-image-container">
+                  <img id="previewImage" src="" alt="Preview">
+                  <div class="image-info">
+                      <span class="resolution-badge"></span>
+                  </div>
+              </div>
+              <div class="modal-actions">
+                  <a href="" class="modal-btn primary" id="modalDownload" download>
+                      <i class="fas fa-download"></i> Download Image
+                  </a>
+                  <button class="modal-btn secondary" id="modalCopy">
+                      <i class="fas fa-copy"></i> Copy URL
+                  </button>
+              </div>
+          </div>
+      </div>
+    <script src="script.js"></script>
+</body>
+</html>
